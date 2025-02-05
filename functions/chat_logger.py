@@ -9,7 +9,7 @@ def register_chat_logger(dp: Dispatcher):
         chat = update.chat
         status = update.new_chat_member.status
 
-        if status in ["member", "administrator"]:  # Бот добавлен в чат
+        if status in ["member", "administrator"]:
             await add_chat(chat.id, chat.title or "Без названия")
             logging.info(f"Бот добавлен в чат: {chat.title} ({chat.id})")
         elif status == "kicked":
