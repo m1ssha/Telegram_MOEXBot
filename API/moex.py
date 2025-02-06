@@ -83,3 +83,33 @@ def get_moex_stock_history_today(ticker):
     else:
         print(f"Ошибка запроса: {response.status_code}")
         return None
+
+
+def get_imoex(days=30):
+    end_date = datetime.today().strftime("%Y-%m-%d")
+    start_date = (datetime.today() - timedelta(days=days)).strftime("%Y-%m-%d")
+
+    if days >= 182:
+        interval = 7
+    elif days < 182:
+        interval = 24
+
+    url = "https://iss.moex.com/iss/engines/stock/markets/index/securities/IMOEX/candles.json"
+    params = {
+        "from": start_date,
+        "till": end_date,
+        "interval": interval
+    }
+
+    response = requests.get(url, params=params)
+
+    if response.status_code == 200:
+        data = response.json()
+        candles = data["candles"]["data"]
+        columns = data["candles"]["columns"]
+
+        df = pd.DataFrame(candles, columns=columns)
+        return df
+    else:
+        print(f"Ошибка запроса: {response.status_code}")
+        return None
