@@ -7,7 +7,6 @@ from functions.plot import plot_moex_history
 from commands._tickers import POPULAR_TICKERS
 
 PERIODS = {
-    "1 день": 1,
     "3 дня": 3,
     "Неделя": 7,
     "2 недели": 14,
