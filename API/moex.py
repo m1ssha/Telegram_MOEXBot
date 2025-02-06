@@ -34,11 +34,16 @@ def get_moex_stock_history(ticker, days=7):
     end_date = datetime.today().strftime("%Y-%m-%d")
     start_date = (datetime.today() - timedelta(days=days)).strftime("%Y-%m-%d")
 
+    if days >= 182:
+        interval = 7
+    elif days < 182:
+        interval = 24
+
     url = f"https://iss.moex.com/iss/engines/stock/markets/shares/securities/{ticker}/candles.json"
     params = {
         "from": start_date,
         "till": end_date,
-        "interval": 24
+        "interval": interval
     }
 
     response = requests.get(url, params=params)

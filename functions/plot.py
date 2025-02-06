@@ -26,7 +26,7 @@ def plot_moex_history(ticker, days=7):
 
         plt.plot(df.index, df["close"], marker="o", linestyle="-", color="#00c8ff", label="Цена закрытия")
 
-        plt.gca().xaxis.set_major_formatter(mdates.DateFormatter("%d.%m"))
+        plt.gca().xaxis.set_major_formatter(mdates.DateFormatter("%d.%m.%Y"))
         plt.xticks(rotation=45, fontsize=10, color="white")
         plt.yticks(color="white")
 
