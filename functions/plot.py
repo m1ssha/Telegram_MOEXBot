@@ -45,7 +45,7 @@ def plot_moex_history(ticker, days=7):
     else:
         return None
 
-def plot_moex_history_1d(ticker):
+def plot_moex_history_today(ticker):
     df = get_moex_stock_history_today(ticker)
 
     if df is not None and not df.empty:
@@ -60,7 +60,7 @@ def plot_moex_history_1d(ticker):
 
         plt.xlabel("Время (часы)", fontsize=12, fontweight="bold")
         plt.ylabel("Цена (₽)", fontsize=12, fontweight="bold")
-        plt.title(f"Динамика цены акции {ticker} за последние 24 часа", fontsize=14, fontweight="bold")
+        plt.title(f"Динамика цены акции {ticker} за сегодня", fontsize=14, fontweight="bold")
 
         plt.grid(True, linestyle="--", alpha=0.6)
         plt.gca().yaxis.grid(True, linestyle="--", alpha=0.6)
