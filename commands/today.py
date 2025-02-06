@@ -2,9 +2,9 @@ from aiogram import types, Dispatcher
 from aiogram.filters import Command
 from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 
-from API.moex import get_moex_stock_history
+from API.moex import get_moex_lastprice
 from functions.plot import plot_moex_history_today
-from _tickers import POPULAR_TICKERS
+from commands._tickers import POPULAR_TICKERS
 
 
 def register_today(dp: Dispatcher):
@@ -36,7 +36,8 @@ async def process_today(message: Message, ticker: str):
     photo = plot_moex_history_today(ticker)
 
     if photo:
-        caption = f"📊 График цен акции <b>{ticker}</b> за сегодня"
+        last_price = get_moex_lastprice(ticker)
+        caption = f"📊 График цен акции <b>{ticker}</b> за сегодня\nЦена сейчас: {last_price} RUB"
         await message.answer_photo(photo=photo, caption=caption, parse_mode="HTML")
     else:
         await message.answer("❌ Ошибка при получении данных", parse_mode="HTML")

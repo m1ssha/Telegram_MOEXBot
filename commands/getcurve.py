@@ -4,7 +4,7 @@ from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, C
 
 from API.moex import get_moex_stock_history
 from functions.plot import plot_moex_history
-from _tickers import POPULAR_TICKERS
+from commands._tickers import POPULAR_TICKERS
 
 def register_getcurve(dp: Dispatcher):
     @dp.message(Command("getcurve"))
