@@ -55,7 +55,7 @@ def get_moex_stock_history(ticker, days=7):
         return None
     
 
-def get_moex_stock_history_1d(ticker):
+def get_moex_stock_history_today(ticker):
     end_date = datetime.today().strftime("%Y-%m-%d")
     start_date = (datetime.today() - timedelta(days=1)).strftime("%Y-%m-%d")
 

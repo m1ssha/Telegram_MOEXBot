@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from aiogram.types import BufferedInputFile
-from API.moex import get_moex_stock_history, get_moex_stock_history_1d
+from API.moex import get_moex_stock_history, get_moex_stock_history_today
 
 def plot_moex_history(ticker, days=7):
     df = get_moex_stock_history(ticker, days)
@@ -46,7 +46,7 @@ def plot_moex_history(ticker, days=7):
         return None
 
 def plot_moex_history_1d(ticker):
-    df = get_moex_stock_history_1d(ticker)
+    df = get_moex_stock_history_today(ticker)
 
     if df is not None and not df.empty:
         df["begin"] = pd.to_datetime(df["begin"])
