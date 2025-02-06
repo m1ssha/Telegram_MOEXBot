@@ -24,7 +24,7 @@ def plot_moex_history(ticker, days=7):
         ax = plt.gca()
         ax.set_facecolor(bg_color)
 
-        plt.plot(df.index, df["close"], marker="o", linestyle="-", color="#00c8ff", label="Цена закрытия")
+        plt.plot(df.index, df["close"], linestyle="-", color="#00c8ff", label="Цена закрытия")
 
         plt.gca().xaxis.set_major_formatter(mdates.DateFormatter("%d.%m.%Y"))
         plt.xticks(rotation=45, fontsize=10, color="white")
@@ -70,7 +70,7 @@ def plot_moex_history_today(ticker):
         ax = plt.gca()
         ax.set_facecolor(bg_color)
 
-        plt.plot(df.index, df["close"], marker="o", linestyle="-", color="#00c8ff")
+        plt.plot(df.index, df["close"], linestyle="-", color="#00c8ff")
 
         plt.gca().xaxis.set_major_formatter(mdates.DateFormatter("%H:%M"))
         plt.xticks(rotation=45, fontsize=10, color="white")
