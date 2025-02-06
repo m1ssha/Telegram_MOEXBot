@@ -10,4 +10,4 @@ def register_help(dp):
     async def help_handler(message: Message):
         logging.info(f"Пользователь {message.from_user.full_name} ({message.from_user.id}) вызвал команду /help")
         answer = messages.help_menu_text
-        await message.answer(answer, parse_mode="HTML")
+        await message.answer(answer, parse_mode="HTML", disable_web_page_preview=True)
